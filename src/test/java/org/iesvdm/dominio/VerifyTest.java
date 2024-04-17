@@ -23,6 +23,7 @@ public class VerifyTest {
         final List<String> mockedList = mock(ArrayList.class);
         mockedList.size();
         verify(mockedList).size();
+        //accede al mock y verifica que se ha llamado a ese metodo, el test debe pasar
     }
 
     @Test
