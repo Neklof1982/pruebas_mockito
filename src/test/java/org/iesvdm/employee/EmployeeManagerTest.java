@@ -8,12 +8,11 @@ import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
+import org.mockito.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class EmployeeManagerTest {
 
@@ -29,6 +28,11 @@ public class EmployeeManagerTest {
 	 */
 	@InjectMocks
 	private EmployeeManager employeeManager;
+
+	//Teniendo la clase EmplyeeManager se le envia unos mock a BankService, employeeRepository
+	//para poder usar la clase sin problema y realizar los test
+	//aislando la clase para las pruebas unitarias
+
 
 	@Captor
 	private ArgumentCaptor<String> idCaptor;
@@ -57,6 +61,12 @@ public class EmployeeManagerTest {
 	@Test
 	public void testPayEmployeesReturnZeroWhenNoEmployeesArePresent() {
 
+		Mockito.when(employeeRepository.findAll()).thenReturn(Arrays.asList(notToBePaid, toBePaid));
+		Mockito.when(employeeRepository.findAll()).thenReturn(List.of()); // no puede modificar lista
+		when(employeeRepository.findAll()).thenReturn(new ArrayList<>());
+		//when(employeeManager.payEmployees()).getMock().equals(true);
+
+		assertThat((employeeManager.payEmployees())).isEqualTo(0);
 	}
 
 	/**
@@ -72,6 +82,11 @@ public class EmployeeManagerTest {
 	@Test
 	public void testPayEmployeesReturnOneWhenOneEmployeeIsPresentAndBankServicePayPaysThatEmployee() {
 
+		when(employeeRepository.findAll()).thenReturn(Arrays.asList(new Employee("1", 1000)));
+
+		verify(bankService, times(1)).pay("1",1000);
+
+		verifyNoMoreInteractions(bankService);
 	}
 
 

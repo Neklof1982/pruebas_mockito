@@ -2,6 +2,7 @@ package org.iesvdm.employee;
 
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatRuntimeException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +38,14 @@ public class EmployeeInMemoryRepositoryTest {
 	@Test
 	public void testEmployeeRepositoryFindAll() {
 
+		Employee employee1 = new Employee( "1", 1000.0d);
+		Employee employee2 = new Employee( "2", 2000.0d);
+
+		employees.add(employee1);
+		employees.add(employee2);
+
+		assertThat(employeeRepository.findAll()).containsExactly(employee1, employee2);
+
 	}
 
 	/**
@@ -48,6 +57,9 @@ public class EmployeeInMemoryRepositoryTest {
 	@Test
 	public void testEmployeeRepositorySaveNewEmployee() {
 
+		Employee employee1 = new Employee( "1", 1000.0d);
+		employeeRepository.save(employee1);
+		assertThat(employeeRepository.findAll()).containsExactly(employee1);
 	}
 
 	/**
@@ -61,6 +73,20 @@ public class EmployeeInMemoryRepositoryTest {
 	 */
 	@Test
 	public void testEmployeeRepositorySaveExistingEmployee() {
+
+		Employee employee1 = new Employee( "1", 1000.0d);
+		Employee employee2 = new Employee( "2", 2000.0d);
+
+		employees.add(employee1);
+		employees.add(employee2);
+		employee1.setSalary(1010.0d);
+		employee2.setSalary(2020.0d);
+
+		employeeRepository.save(employee1);
+		employeeRepository.save(employee2);
+
+		assertThat(employee1.getSalary()).isEqualTo(1010.0d);
+		assertThat(employee2.getSalary()).isEqualTo(2020.0d);
 
 	}
 }
