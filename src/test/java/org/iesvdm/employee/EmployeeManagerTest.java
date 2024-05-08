@@ -200,6 +200,16 @@ public class EmployeeManagerTest {
 	@Test
 	public void testExampleOfArgumentCaptor() {
 
+		Employee employee1 = new Employee("1", 1000);
+		Employee employee2 = new Employee("2", 2000);
+
+		List<Employee> list = Arrays.asList(employee1, employee2);
+
+		when(employeeRepository.findAll()).thenReturn(list);
+		assertThat((employeeManager.payEmployees())).isEqualTo(2);
+
+
+
 	}
 
 	/**
@@ -213,6 +223,8 @@ public class EmployeeManagerTest {
 	 */
 	@Test
 	public void testEmployeeSetPaidIsCalledAfterPaying() {
+
+
 
 	}
 
