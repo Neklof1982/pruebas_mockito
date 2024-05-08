@@ -104,6 +104,21 @@ public class EmployeeManagerTest {
 	@Test
 	public void testPayEmployeesWhenSeveralEmployeeArePresent() {
 
+		Employee employee1 = new Employee("1", 1000);
+		Employee employee2 = new Employee("2", 2000);
+
+		List<Employee> list = Arrays.asList(employee1, employee2);
+
+		when(employeeRepository.findAll()).thenReturn(list);
+		assertThat((employeeManager.payEmployees())).isEqualTo(2);
+		verify(bankService, times(1)).pay("1",1000);
+		verify(bankService, times(1)).pay("2",2000);
+		//verify(bankService, times (2)).pay(anyString(),anyDouble());
+
+		verifyNoMoreInteractions(bankService);
+
+
+
 	}
 
 	/**
@@ -119,6 +134,18 @@ public class EmployeeManagerTest {
 	@Test
 	public void testPayEmployeesInOrderWhenSeveralEmployeeArePresent() {
 
+		Employee employee1 = new Employee("1", 1000);
+		Employee employee2 = new Employee("2", 2000);
+		List<Employee> list = Arrays.asList(employee1, employee2);
+
+		when(employeeRepository.findAll()).thenReturn(list);
+		assertThat((employeeManager.payEmployees())).isEqualTo(2);
+
+		InOrder inOrder = inOrder(bankService);
+
+			inOrder.verify(bankService).pay("1",1000);
+			inOrder.verify(bankService).pay("2",2000);
+
 	}
 
 	/**
@@ -132,6 +159,28 @@ public class EmployeeManagerTest {
 	@Test
 	public void testExampleOfInOrderWithTwoMocks() {
 
+		Employee employee1 = new Employee("1", 1000);
+		Employee employee2 = new Employee("2", 2000);
+		List<Employee> list = Arrays.asList(employee1, employee2);
+
+		when(employeeRepository.findAll()).thenReturn(list);
+		assertThat((employeeManager.payEmployees())).isEqualTo(2);
+
+		InOrder inOrder = inOrder(employeeRepository, bankService);
+
+		// aplicamos el orden de invocacion segun hemos indicado en el InOrder
+
+		inOrder.verify(employeeRepository).findAll();
+		inOrder.verify(bankService).pay("1",1000);
+		inOrder.verify(bankService).pay("2",2000);
+
+		// si no indicamos el orden en el verify ( es decir inOrder.?)
+		// podemos poner el orden que queramos ya que no pide el orden
+		// pasa el test ya que no esta aplicando inOrder
+
+		verify(bankService).pay("1",1000);
+		verify(bankService).pay("2",2000);
+		verify(employeeRepository).findAll();
 	}
 
 

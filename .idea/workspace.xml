@@ -10,7 +10,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5c399beb-7381-4adb-ab43-564baa14b56b" name="Changes" comment="Actualizaciones a la teoría de mockito">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/iesvdm/employee/EmployeeInMemoryRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/iesvdm/employee/EmployeeInMemoryRepositoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/iesvdm/employee/EmployeeManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/iesvdm/employee/EmployeeManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,8 +56,11 @@
     "JUnit.EmployeeInMemoryRepositoryTest.testEmployeeRepositoryFindAll.executor": "Run",
     "JUnit.EmployeeInMemoryRepositoryTest.testEmployeeRepositorySaveExistingEmployee.executor": "Run",
     "JUnit.EmployeeInMemoryRepositoryTest.testEmployeeRepositorySaveNewEmployee.executor": "Run",
+    "JUnit.EmployeeManagerTest.testExampleOfInOrderWithTwoMocks.executor": "Run",
+    "JUnit.EmployeeManagerTest.testPayEmployeesInOrderWhenSeveralEmployeeArePresent.executor": "Run",
     "JUnit.EmployeeManagerTest.testPayEmployeesReturnOneWhenOneEmployeeIsPresentAndBankServicePayPaysThatEmployee.executor": "Run",
     "JUnit.EmployeeManagerTest.testPayEmployeesReturnZeroWhenNoEmployeesArePresent.executor": "Run",
+    "JUnit.EmployeeManagerTest.testPayEmployeesWhenSeveralEmployeeArePresent.executor": "Run",
     "JUnit.MockVsSpyTest.whenThenReturn_doReturnWhen_mock_noSideEffect.executor": "Run",
     "JUnit.MockVsSpyTest.whenThenReturn_doReturnWhen_spy_sideEffect.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -89,8 +91,8 @@
       <recent name="org.iesvdm.dominio" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.EmployeeManagerTest.testPayEmployeesReturnOneWhenOneEmployeeIsPresentAndBankServicePayPaysThatEmployee">
-    <configuration name="EmployeeInMemoryRepositoryTest.testEmployeeRepositoryFindAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.EmployeeManagerTest.testExampleOfInOrderWithTwoMocks">
+    <configuration name="EmployeeManagerTest.testExampleOfInOrderWithTwoMocks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto_mockito" />
       <extension name="coverage">
         <pattern>
@@ -99,14 +101,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.iesvdm.employee" />
-      <option name="MAIN_CLASS_NAME" value="org.iesvdm.employee.EmployeeInMemoryRepositoryTest" />
-      <option name="METHOD_NAME" value="testEmployeeRepositoryFindAll" />
+      <option name="MAIN_CLASS_NAME" value="org.iesvdm.employee.EmployeeManagerTest" />
+      <option name="METHOD_NAME" value="testExampleOfInOrderWithTwoMocks" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EmployeeInMemoryRepositoryTest.testEmployeeRepositorySaveExistingEmployee" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="EmployeeManagerTest.testPayEmployeesInOrderWhenSeveralEmployeeArePresent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto_mockito" />
       <extension name="coverage">
         <pattern>
@@ -115,24 +117,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.iesvdm.employee" />
-      <option name="MAIN_CLASS_NAME" value="org.iesvdm.employee.EmployeeInMemoryRepositoryTest" />
-      <option name="METHOD_NAME" value="testEmployeeRepositorySaveExistingEmployee" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EmployeeInMemoryRepositoryTest.testEmployeeRepositorySaveNewEmployee" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="proyecto_mockito" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.iesvdm.employee.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.iesvdm.employee" />
-      <option name="MAIN_CLASS_NAME" value="org.iesvdm.employee.EmployeeInMemoryRepositoryTest" />
-      <option name="METHOD_NAME" value="testEmployeeRepositorySaveNewEmployee" />
+      <option name="MAIN_CLASS_NAME" value="org.iesvdm.employee.EmployeeManagerTest" />
+      <option name="METHOD_NAME" value="testPayEmployeesInOrderWhenSeveralEmployeeArePresent" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -170,13 +156,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="EmployeeManagerTest.testPayEmployeesWhenSeveralEmployeeArePresent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="proyecto_mockito" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.iesvdm.employee.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.iesvdm.employee" />
+      <option name="MAIN_CLASS_NAME" value="org.iesvdm.employee.EmployeeManagerTest" />
+      <option name="METHOD_NAME" value="testPayEmployeesWhenSeveralEmployeeArePresent" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.EmployeeManagerTest.testExampleOfInOrderWithTwoMocks" />
+        <item itemvalue="JUnit.EmployeeManagerTest.testPayEmployeesInOrderWhenSeveralEmployeeArePresent" />
+        <item itemvalue="JUnit.EmployeeManagerTest.testPayEmployeesWhenSeveralEmployeeArePresent" />
         <item itemvalue="JUnit.EmployeeManagerTest.testPayEmployeesReturnOneWhenOneEmployeeIsPresentAndBankServicePayPaysThatEmployee" />
         <item itemvalue="JUnit.EmployeeManagerTest.testPayEmployeesReturnZeroWhenNoEmployeesArePresent" />
-        <item itemvalue="JUnit.EmployeeInMemoryRepositoryTest.testEmployeeRepositorySaveExistingEmployee" />
-        <item itemvalue="JUnit.EmployeeInMemoryRepositoryTest.testEmployeeRepositorySaveNewEmployee" />
-        <item itemvalue="JUnit.EmployeeInMemoryRepositoryTest.testEmployeeRepositoryFindAll" />
       </list>
     </recent_temporary>
   </component>
@@ -205,7 +207,8 @@
       <workItem from="1713343471172" duration="4354000" />
       <workItem from="1713862627896" duration="1088000" />
       <workItem from="1714465197667" duration="1839000" />
-      <workItem from="1715070409767" duration="2774000" />
+      <workItem from="1715070409767" duration="3641000" />
+      <workItem from="1715156690423" duration="1996000" />
     </task>
     <task id="LOCAL-00001" summary="inicial">
       <option name="closed" value="true" />
@@ -247,7 +250,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713349371289</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Actualizaciones a la teoría de mockito">
+      <option name="closed" value="true" />
+      <created>1715075516064</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715075516064</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
