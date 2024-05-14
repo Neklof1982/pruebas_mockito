@@ -225,7 +225,18 @@ public class EmployeeManagerTest {
 	public void testEmployeeSetPaidIsCalledAfterPaying() {
 
 
+		when(employeeRepository.findAll()).thenReturn(Arrays.asList(toBePaid));
 
+
+		assertThat(employeeManager.payEmployees()).isEqualTo(1);
+
+
+		InOrder inOrder = inOrder(bankService, toBePaid);
+
+		inOrder.verify(bankService).pay("2", 2000);
+
+
+		verify(toBePaid).setPaid(true);
 	}
 
 
