@@ -255,6 +255,16 @@ public class EmployeeManagerTest {
 	@Test
 	public void testPayEmployeesWhenBankServiceThrowsException() {
 
+		when(employeeRepository.findAll()).thenReturn(Arrays.asList(notToBePaid));
+
+
+		doThrow(new RuntimeException()).when(bankService).pay(anyString(), anyDouble());
+
+
+		assertThat(employeeManager.payEmployees()).isEqualTo(0);
+
+
+		verify(notToBePaid).setPaid(false);
 	}
 
 	/**
