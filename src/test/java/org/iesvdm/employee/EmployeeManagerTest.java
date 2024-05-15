@@ -84,6 +84,8 @@ public class EmployeeManagerTest {
 
 		when(employeeRepository.findAll()).thenReturn(Arrays.asList(new Employee("1", 1000)));
 
+
+
 		verify(bankService, times(1)).pay("1",1000);
 
 		verifyNoMoreInteractions(bankService);
@@ -282,6 +284,21 @@ public class EmployeeManagerTest {
 	 */
 	@Test
 	public void testOtherEmployeesArePaidWhenBankServiceThrowsException() {
+
+		when(employeeRepository.findAll()).thenReturn(Arrays.asList(notToBePaid, toBePaid));
+
+		doThrow(new RuntimeException()).doNothing().
+				when(bankService).pay(anyString(), anyDouble());
+
+
+		assertThat(employeeManager.payEmployees()).isEqualTo(1);
+
+
+		verify(notToBePaid).setPaid(false);
+
+
+		verify(toBePaid).setPaid(true);
+
 	}
 
 
@@ -301,6 +318,22 @@ public class EmployeeManagerTest {
 	 */
 	@Test
 	public void testArgumentMatcherExample() {
+
+		when(employeeRepository.findAll()).thenReturn(Arrays.asList(notToBePaid, toBePaid));
+
+
+		doThrow(new RuntimeException()).doNothing().
+				when(bankService).pay(argThat(s ->
+						s.equals("1")), anyDouble());
+
+
+		assertThat(employeeManager.payEmployees()).isEqualTo(1);
+
+
+		verify(notToBePaid).setPaid(false);
+
+
+		verify(toBePaid).setPaid(true);
 
 	}
 
